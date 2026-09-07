@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Menu de navegacion */
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #f1c40f;
+}
+
+/* Contenedor general */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la página de Inicio*/
+.hero {
+  background-color: #3498db;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 15px;
+  background: #fff;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background-color: #ccc;
+}
+
+/* Estilos para Formularios (Login, Registro, Admin) */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #219150;
+}
+
+/* Estilos menu Admin */
+.admin-layout {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background: #34495e;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.sidebar a:hover {
+  background: #2c3e50;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
