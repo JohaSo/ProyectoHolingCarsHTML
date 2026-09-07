@@ -58,7 +58,7 @@
         return;
       }
 
-      // 2. Validación de correo (Regex del PDF)
+      // 2. Validación de correo
       const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
       if (!regexCorreo.test(correo)) {
         alert("Correo no válido. Solo @duoc.cl, @profesor.duoc.cl o @gmail.com");
@@ -71,7 +71,7 @@
         return;
       }
 
-      // 4. Guardar datos de sesión simulada en LocalStorage
+      // Guardar datos de sesión simulada en LocalStorage
       const usuario = {
         correo: correo,
         rol: "Administrador"
@@ -80,7 +80,7 @@
 
       alert("¡Bienvenido/a " + correo + "!");
 
-      // 5. Redirección exacta a la carpeta USUARIOS dentro de la raíz
+      // Redirección exacta a la carpeta USUARIOS dentro de la raíz
       window.location.href = "USUARIOS/Admin.html";
     }
   </script>
