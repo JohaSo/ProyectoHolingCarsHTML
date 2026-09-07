@@ -1,1 +1,139 @@
-/*Drea*/
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Usuario | HoldingCars</title>
+  <link rel="stylesheet" href="../CSS/Estilo.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>HoldingCars</h1>
+    </div>
+    <nav>
+      <a href="Inicio.html">Inicio</a>
+      <a href="Producto.html">Vehículos</a>
+      <a href="Login.html">Iniciar Sesión</a>
+    </nav>
+  </header>
+
+  <div class="container" style="max-width: 600px;">
+    <h2>Registro de Usuario</h2>
+    <form id="formRegistro" onsubmit="return false;">
+      <div class="form-group">
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" maxlength="100" placeholder="Ej: Juan Pérez" required>
+      </div>
+
+      <div class="form-group">
+        <label for="correo">Correo (Debe ser @duoc.cl, @profesor.duoc.cl o @gmail.com)</label>
+        <input type="email" id="correo" maxlength="100" placeholder="ejemplo@duoc.cl" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña (4 a 10 caracteres)</label>
+        <input type="password" id="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rut">RUT (Ej: 19011022K)</label>
+        <input type="text" id="rut" maxlength="9" placeholder="12345678K" required>
+      </div>
+
+      <div class="form-group">
+        <label for="region">Región</label>
+        <select id="region" onchange="cargarComunas('region', 'comuna')" required>
+          <option value="">-- Seleccione --</option>
+          <!-- JS llenará las regiones dinámicamente -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="comuna">Comuna</label>
+        <select id="comuna" required>
+          <option value="">-- Seleccione --</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="validarRegistro()">Registrar</button>
+    </form>
+  </div>
+
+  <!-- Carga del JS principal -->
+  <script src="../JS/Validaciones.js"></script>
+  <script>
+    // Llenar select de regiones al cargar el documento
+    document.addEventListener('DOMContentLoaded', () => {
+      const selectRegion = document.getElementById('region');
+      if (typeof regiones !== 'undefined' && selectRegion) {
+        regiones.forEach(reg => {
+          const option = document.createElement('option');
+          option.value = reg.nombre;
+          option.textContent = reg.nombre;
+          selectRegion.appendChild(option);
+        });
+      }
+    });
+
+    function validarRegistro() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const pass = document.getElementById('password').value;
+      const rut = document.getElementById('rut').value.trim();
+      const region = document.getElementById('region').value;
+      const comuna = document.getElementById('comuna').value;
+
+      // 1. Validación de campos obligatorios vacíos
+      if (!nombre) {
+        alert("Por favor, ingrese su nombre completo.");
+        return;
+      }
+
+      // 2. Validación de correo (Regex)
+      const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
+      if (!regexCorreo.test(correo)) {
+        alert("Correo no válido. Solo se permiten dominios @duoc.cl, @profesor.duoc.cl y @gmail.com");
+        return;
+      }
+
+      // 3. Validación de contraseña (longitud)
+      if (pass.length < 4 || pass.length > 10) {
+        alert("La contraseña debe tener entre 4 y 10 caracteres.");
+        return;
+      }
+
+      // 4. Validación de RUT (función alojada en Validaciones.js)
+      if (!validarRut(rut)) {
+        alert("El RUT ingresado no es válido.");
+        return;
+      }
+
+      // 5. Validación de selección de Región y Comuna
+      if (!region || !comuna) {
+        alert("Debe seleccionar una región y una comuna.");
+        return;
+      }
+
+      // 6. Simulación de guardado en el Backend usando localStorage
+      const nuevoUsuario = {
+        nombre: nombre,
+        correo: correo,
+        rut: rut,
+        region: region,
+        comuna: comuna,
+        rol: "Cliente"
+      };
+
+      let usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+      usuariosGuardados.push(nuevoUsuario);
+      localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
+
+      alert("¡Registro exitoso! Sus datos se han guardado correctamente.");
+      
+      // Redirigir al inicio de sesión
+      window.location.href = "Login.html";
+    }
+  </script>
+</body>
+</html>
