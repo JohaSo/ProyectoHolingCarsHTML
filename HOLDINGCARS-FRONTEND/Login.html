@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión | HoldingCars</title>
-  <!-- Al estar en la raíz, la ruta al CSS es directa -->
-  <link rel="stylesheet" href="CSS/Estilo.css">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="../CSS/Estilo.css">
 </head>
+
 <body>
   <header>
+    <img src="../IMG/holding_cars_logo.jpg" alt="Logo HoldingCars">
     <div class="logo">
       <h1>HoldingCars</h1>
     </div>
@@ -24,42 +25,31 @@
     <form id="formLogin" onsubmit="return false;">
       <div class="form-group">
         <label for="loginCorreo">Correo Electrónico</label>
-        <input 
-          type="email" 
-          id="loginCorreo" 
-          placeholder="ejemplo@duoc.cl" 
-          required
-        >
+        <input type="email" id="loginCorreo" placeholder="ejemplo@duoc.cl" required>
       </div>
 
       <div class="form-group">
         <label for="loginPass">Contraseña</label>
-        <input 
-          type="password" 
-          id="loginPass" 
-          placeholder="••••••••" 
-          required
-        >
+        <input type="password" id="loginPass" placeholder="••••••••" required>
       </div>
 
       <button type="button" onclick="iniciarSesion()">Ingresar</button>
     </form>
   </div>
 
-  <!-- Carga del JS desde la raíz -->
   <script src="JS/Validaciones.js"></script>
   <script>
     function iniciarSesion() {
       const correo = document.getElementById('loginCorreo').value.trim();
       const pass = document.getElementById('loginPass').value;
 
-      // 1. Validar campos obligatorios
+      //Validar campos obligatorios
       if (!correo || !pass) {
         alert("Por favor, ingrese su correo y contraseña.");
         return;
       }
 
-      // 2. Validación de correo (Regex del PDF)
+      // Validación de correo
       const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
       if (!regexCorreo.test(correo)) {
         alert("Correo no válido. Solo se permiten dominios @duoc.cl, @profesor.duoc.cl o @gmail.com");
@@ -72,7 +62,7 @@
         return;
       }
 
-      // 4. Guardar datos de sesión simulada en LocalStorage
+      // Guardar datos de sesión simulada en LocalStorage
       const usuario = {
         correo: correo,
         rol: "Administrador"
@@ -82,8 +72,9 @@
       alert("¡Bienvenido/a " + correo + "!");
 
       // 5. Redirección exacta a la carpeta USUARIOS dentro de la raíz
-      window.location.href = "USUARIOS/Admin.html";
+      window.location.href = "USUARIOS";
     }
   </script>
 </body>
+
 </html>
