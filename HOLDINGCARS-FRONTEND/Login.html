@@ -1,89 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión | HoldingCars</title>
-  <!-- Al estar en la raíz, la ruta al CSS es directa -->
-  <link rel="stylesheet" href="CSS/Estilo.css">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="../CSS/Estilo.css">
 </head>
+
 <body>
   <header>
+    <img src="../IMG/holding_cars_logo.jpg" alt="Logo HoldingCars">
     <div class="logo">
       <h1>HoldingCars</h1>
     </div>
     <nav>
-      <a href="Inicio.html">Inicio</a>
-      <a href="Producto.html">Vehículos</a>
-      <a href="Registro.html">Registro</a>
+      <li><a href="Inicio.html">Inicio</a></li>
+      <li><a href="Producto.html">Flota</a></li>
     </nav>
   </header>
 
   <div class="container" style="max-width: 400px; margin-top: 50px;">
-    <h2 style="text-align: center;">Iniciar Sesión</h2>
-    <form id="formLogin" onsubmit="return false;">
-      <div class="form-group">
-        <label for="loginCorreo">Correo Electrónico</label>
-        <input 
-          type="email" 
-          id="loginCorreo" 
-          placeholder="ejemplo@duoc.cl" 
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="loginPass">Contraseña</label>
-        <input 
-          type="password" 
-          id="loginPass" 
-          placeholder="••••••••" 
-          required
-        >
-      </div>
-
-      <button type="button" onclick="iniciarSesion()">Ingresar</button>
-    </form>
+    <h2 style="text-align: center;">Acceso Administrador</h2>
+  </div>
+  <div class="form-group">
+    <label>Contraseña</label>
+    <input type="password" id="loginPass" required>
+  </div>
+  <button type="button" onclick="iniciarSesion()">Ingresar</button>
+  </form>
   </div>
 
-  <!-- Carga del JS desde la raíz -->
+  <div class="form-group">
+    <label for="loginPass">Contraseña</label>
+    <input type="password" id="loginPass" placeholder="••••••••" required>
+  </div>
+
+  <button type="button" onclick="iniciarSesion()">Ingresar</button>
+  </form>
+  </div>
+
   <script src="JS/Validaciones.js"></script>
   <script>
     function iniciarSesion() {
-      const correo = document.getElementById('loginCorreo').value.trim();
+      const correo = document.getElementById('loginCorreo').value;
       const pass = document.getElementById('loginPass').value;
 
-      // 1. Validar campos obligatorios
-      if (!correo || !pass) {
-        alert("Por favor, ingrese su correo y contraseña.");
-        return;
-      }
-
-      // 2. Validación de correo (Regex del PDF)
+      // Validar formato de correo
       const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
       if (!regexCorreo.test(correo)) {
-        alert("Correo no válido. Solo se permiten dominios @duoc.cl, @profesor.duoc.cl o @gmail.com");
+        alert("Correo no válido. Solo @duoc.cl, @profesor.duoc.cl o @gmail.com");
         return;
       }
 
-      // 3. Validación de longitud de contraseña
+      // Validar contraseña
       if (pass.length < 4 || pass.length > 10) {
         alert("La contraseña debe tener entre 4 y 10 caracteres.");
         return;
       }
 
-      // 4. Guardar datos de sesión simulada en LocalStorage
-      const usuario = {
-        correo: correo,
-        rol: "Administrador"
-      };
-      localStorage.setItem('usuarioActual', JSON.stringify(usuario));
-
-      alert("¡Bienvenido/a " + correo + "!");
-
-      // 5. Redirección exacta a la carpeta USUARIOS dentro de la raíz
+      // Simulación de login exitoso
+      alert("Bienvenido/a al sistema de actas");
       window.location.href = "USUARIOS/Admin.html";
     }
   </script>
 </body>
+
 </html>

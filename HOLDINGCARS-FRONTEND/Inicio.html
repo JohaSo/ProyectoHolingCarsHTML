@@ -1,29 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <title>Inicio</title>
-    <link rel="stylesheet" href="CSS/Estilo.css">
+    <title>HoldingCars | Gestión de Actas</title>
+    <link rel="stylesheet" href="../CSS/Estilo.css">
 </head>
-<head>
-    <img src="IMG/holding_cars_logo.jpg" alt="Logo Holding Cars">
-    <nav>
-        <ul>
-            <li><a href="Inicio.html">Inicio</a></li>
-            <li><a href="Productos.html">Productos</a></li>
-            <li><a href="Login.html">Login</a></li>
-            <li><a href="Registro.html">Registro</a></li>
-            <li><a href="Us.html">Nosotros</a></li>
-        </ul>
-    </nav>
-</head>
-
 <body>
-    12345
-    TESTEO
-    DE COMITS
-    <script src="HoldingCars.js"></script>
-</body>
 
+    <!-- 1. Barra de Navegación (Pública y clara) -->
+    <header>
+        <div class="logo">
+            <h1>HoldingCars</h1>
+        </div>
+        <nav>
+            <a href="Inicio.html">Inicio</a>
+            <a href="Producto.html">Flota</a>
+            <a href="Us.html">Nosotros</a>
+            <a href="Login.html">Iniciar Sesión</a>
+        </nav>
+    </header>
+
+    <!-- 2. Contenido Principal -->
+    <main class="container">
+        
+        <!-- Saludo y bienvenida al sistema de actas-->
+        <section class="hero">
+            <h2>Control de Flota y Actas Digitales</h2>
+            <p>Sistema para registrar el estado de retiro y entrega de vehículos en tiempo real.</p>
+            <a href="Producto.html" class="btn-primary">Ver Flota Disponible</a>
+        </section>
+
+        <!-- 3. Listado de Vehículos (Tal cual el acta física) -->
+        <section>
+            <h2>Estado Actual de la Flota</h2>
+            <div class="grid" id="lista-vehiculos"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 HoldingCars. Sistema de Gestión de Actas.</p>
+    </footer>
+
+    <script src="JS/Validaciones.js"></script>
+</body>
 </html>

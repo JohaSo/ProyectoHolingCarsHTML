@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro Usuario | HoldingCars</title>
+  <title>Registro Usuario</title>
   <link rel="stylesheet" href="../CSS/Estilo.css">
 </head>
+
 <body>
   <header>
+    <img src="../IMG/holding_cars_logo.jpg" alt="Logo HoldingCars">
     <div class="logo">
       <h1>HoldingCars</h1>
     </div>
@@ -45,7 +47,7 @@
         <label for="region">Región</label>
         <select id="region" onchange="cargarComunas('region', 'comuna')" required>
           <option value="">-- Seleccione --</option>
-          <!-- JS llenará las regiones dinámicamente -->
+          <!-- JS llena las regiones dinamicamente -->
         </select>
       </div>
 
@@ -84,38 +86,38 @@
       const region = document.getElementById('region').value;
       const comuna = document.getElementById('comuna').value;
 
-      // 1. Validación de campos obligatorios vacíos
+      // Validación de campos obligatorios vacíos
       if (!nombre) {
         alert("Por favor, ingrese su nombre completo.");
         return;
       }
 
-      // 2. Validación de correo (Regex)
+      // Validación de correo
       const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
       if (!regexCorreo.test(correo)) {
         alert("Correo no válido. Solo se permiten dominios @duoc.cl, @profesor.duoc.cl y @gmail.com");
         return;
       }
 
-      // 3. Validación de contraseña (longitud)
+      // Validación de contraseña (longitud)
       if (pass.length < 4 || pass.length > 10) {
         alert("La contraseña debe tener entre 4 y 10 caracteres.");
         return;
       }
 
-      // 4. Validación de RUT (función alojada en Validaciones.js)
+      // Validación de RUT (función alojada en Validaciones.js)
       if (!validarRut(rut)) {
         alert("El RUT ingresado no es válido.");
         return;
       }
 
-      // 5. Validación de selección de Región y Comuna
+      // Validación de selección de Región y Comuna
       if (!region || !comuna) {
         alert("Debe seleccionar una región y una comuna.");
         return;
       }
 
-      // 6. Simulación de guardado en el Backend usando localStorage
+      // Simulación de guardado en el Backend usando localStorage
       const nuevoUsuario = {
         nombre: nombre,
         correo: correo,
@@ -130,10 +132,11 @@
       localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
 
       alert("¡Registro exitoso! Sus datos se han guardado correctamente.");
-      
+
       // Redirigir al inicio de sesión
       window.location.href = "Login.html";
     }
   </script>
 </body>
+
 </html>

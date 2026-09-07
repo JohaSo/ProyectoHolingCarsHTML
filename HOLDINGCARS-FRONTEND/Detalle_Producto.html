@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Acta de Retiro/Entrega | HoldingCars</title>
+    <link rel="stylesheet" href="../CSS/Estilo.css">
+    <style>
+        /* Estilos específicos para imitar el acta en papel */
+        .acta-container { max-width: 900px; margin: 0 auto; background: #fff; padding: 20px; border: 1px solid #ccc; }
+        .acta-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 20px; }
+        .seccion-acta { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        .seccion-acta h3 { margin-top: 0; background: #eee; padding: 5px; }
+        
+        /* Simulación de los autos del acta */
+        .carros-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .carro-box { text-align: center; }
+        .carro-silueta { width: 100%; height: 80px; background: #ddd; border-radius: 40px 40px 0 0; position: relative; margin-bottom: 10px; }
+        .ventanas { position: absolute; top: 20px; left: 20%; width: 60%; height: 30px; background: #3498db; border-radius: 10px; }
+        .opciones-danos { display: flex; justify-content: center; gap: 10px; margin-top: 5px; font-size: 14px; }
+        
+        /* Layout del formulario en dos columnas */
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="Inicio.html">Inicio</a>
+            <a href="Producto.html">Volver a Flota</a>
+        </nav>
+    </header>
+
+    <div class="container acta-container">
+        
+        <div class="acta-header">
+            <h1>ACTA ENTREGA / RECEPCIÓN VEHÍCULO</h1>
+            <p><strong>N°:</strong> <span id="numeroActa">12872</span></p>
+            <p><strong>Vehículo:</strong> <span id="titulo-acta">Cargando...</span></p>
+        </div>
+
+        <!-- Sección: GENERAL -->
+        <div class="seccion-acta">
+            <h3>GENERAL</h3>
+            <div class="grid-form">
+                <div class="form-group">
+                    <label>Kilometraje</label>
+                    <input type="number" id="km" placeholder="Ej: 45000" required>
+                </div>
+                <div class="form-group">
+                    <label>Combustible</label>
+                    <select id="combustible" required>
+                        <option value="">-- Seleccione --</option>
+                        <option value="1/4">1/4</option>
+                        <option value="1/2">1/2</option>
+                        <option value="3/4">3/4</option>
+                        <option value="Lleno">Lleno</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="documentos"> <label for="documentos">Documentos</label>
+                <input type="checkbox" id="rueda"> <label for="rueda">Rueda de repuesto</label>
+            </div>
+        </div>
+
+        <!-- Sección: SEGURIDAD -->
+        <div class="seccion-acta">
+            <h3>SEGURIDAD</h3>
+            <div class="form-group">
+                <input type="checkbox" id="boliquin"> <label for="boliquin">Botiquín</label>
+                <input type="checkbox" id="extintor"> <label for="extintor">Extintor</label>
+                <input type="checkbox" id="triangulo"> <label for="triangulo">Triángulo</label>
+            </div>
+        </div>
+
+        <!-- Sección: NIVELES Y LUCES -->
+        <div class="seccion-acta">
+            <h3>NIVELES Y LUCES</h3>
+            <div class="form-group">
+                <input type="checkbox" id="aceite"> <label for="aceite">Aceite Motor</label>
+                <input type="checkbox" id="frenos"> <label for="frenos">Frenos</label>
+                <input type="checkbox" id="luces"> <label for="luces">Luces</label>
+            </div>
+        </div>
+
+        <!-- Sección: DETALLE DEL VEHÍCULO (Los dibujos) -->
+        <div class="seccion-acta">
+            <h3>DETALLE DEL VEHÍCULO</h3>
+            <div class="carros-container">
+                <!-- Lado Derecho -->
+                <div class="carro-box">
+                    <div class="carro-silueta"><div class="ventanas"></div></div>
+                    <strong>Lado Derecho</strong>
+                    <div class="opciones-danos">
+                        <label><input type="checkbox" name="danos" value="rayas_der"> Rayas</label>
+                        <label><input type="checkbox" name="danos" value="abolladura_der"> Abolladura</label>
+                    </div>
+                </div>
+                <!-- Lado Izquierdo -->
+                <div class="carro-box">
+                    <div class="carro-silueta" style="background: #bbb;"><div class="ventanas"></div></div>
+                    <strong>Lado Izquierdo</strong>
+                    <div class="opciones-danos">
+                        <label><input type="checkbox" name="danos" value="rayas_izq"> Rayas</label>
+                        <label><input type="checkbox" name="danos" value="abolladura_izq"> Abolladura</label>
+                    </div>
+                </div>
+                <!-- Frontal -->
+                <div class="carro-box">
+                    <div class="carro-silueta" style="background: #ccc; width: 80%; margin: 0 auto;"><div class="ventanas" style="left: 10%; width: 80%;"></div></div>
+                    <strong>Vista Frontal</strong>
+                    <div class="opciones-danos">
+                        <label><input type="checkbox" name="danos" value="rayas_frontal"> Rayas</label>
+                        <label><input type="checkbox" name="danos" value="abolladura_frontal"> Abolladura</label>
+                    </div>
+                </div>
+                <!-- Posterior -->
+                <div class="carro-box">
+                    <div class="carro-silueta" style="background: #eee; width: 80%; margin: 0 auto;"><div class="ventanas" style="left: 10%; width: 80%;"></div></div>
+                    <strong>Vista Posterior</strong>
+                    <div class="opciones-danos">
+                        <label><input type="checkbox" name="danos" value="rayas_post"> Rayas</label>
+                        <label><input type="checkbox" name="danos" value="abolladura_post"> Abolladura</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" onclick="generarActa()" style="margin-top: 20px;">Guardar Acta</button>
+    </div>
+
+    <!-- Importar el JS principal para obtener datos -->
+    <script src="../JS/Validaciones.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            const vehiculo = obtenerVehiculoPorId(id);
+
+            if (vehiculo) {
+                document.getElementById('titulo-acta').innerText = `${vehiculo.nombre} (${vehiculo.patente})`;
+                document.getElementById('km').value = vehiculo.kilometraje;
+            }
+        });
+
+        function generarActa() {
+            const km = document.getElementById('km').value;
+            const combustible = document.getElementById('combustible').value;
+
+            if (!km || !combustible) {
+                alert("Debe completar el kilometraje y el combustible.");
+                return;
+            }
+
+            // Capturar daños marcados
+            const danos = [];
+            document.querySelectorAll('input[name="danos"]:checked').forEach(cb => danos.push(cb.value));
+
+            // Estructurar el objeto acta
+            const idVehiculo = new URLSearchParams(window.location.search).get('id');
+            const acta = {
+                id: Date.now(), // ID único basado en la fecha
+                vehiculoId: parseInt(idVehiculo),
+                kilometraje: km,
+                combustible: combustible,
+                danos: danos
+            };
+
+            // Guardar en localStorage (Simulación de base de datos)
+            guardarActaEnLocalStorage(acta);
+
+            // Redirigir al panel de administración
+            window.location.href = "USUARIOS/Admin.html";
+        }
+    </script>
+</body>
+</html>
