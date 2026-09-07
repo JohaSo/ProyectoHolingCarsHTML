@@ -20,20 +20,27 @@
   </header>
 
   <div class="container" style="max-width: 400px; margin-top: 50px;">
-    <h2 style="text-align: center;">Acceso Administrador</h2>
-  </div>
-  <div class="form-group">
-    <label>Contraseña</label>
-    <input type="password" id="loginPass" required>
-  </div>
-  <button type="button" onclick="iniciarSesion()">Ingresar</button>
-  </form>
-  </div>
+    <h2 style="text-align: center;">Iniciar Sesión</h2>
+    <form id="formLogin" onsubmit="return false;">
+      <div class="form-group">
+        <label for="loginCorreo">Correo Electrónico</label>
+        <input 
+          type="email" 
+          id="loginCorreo" 
+          placeholder="ejemplo@duoc.cl" 
+          required
+        >
+      </div>
 
-  <div class="form-group">
-    <label for="loginPass">Contraseña</label>
-    <input type="password" id="loginPass" placeholder="••••••••" required>
-  </div>
+      <div class="form-group">
+        <label for="loginPass">Contraseña</label>
+        <input 
+          type="password" 
+          id="loginPass" 
+          placeholder="••••••••" 
+          required
+        >
+      </div>
 
   <button type="button" onclick="iniciarSesion()">Ingresar</button>
   </form>
@@ -45,7 +52,13 @@
       const correo = document.getElementById('loginCorreo').value;
       const pass = document.getElementById('loginPass').value;
 
-      // Validar formato de correo
+      // 1. Validar campos obligatorios
+      if (!correo || !pass) {
+        alert("Por favor, ingrese su correo y contraseña.");
+        return;
+      }
+
+      // 2. Validación de correo (Regex del PDF)
       const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
       if (!regexCorreo.test(correo)) {
         alert("Correo no válido. Solo @duoc.cl, @profesor.duoc.cl o @gmail.com");
@@ -58,8 +71,16 @@
         return;
       }
 
-      // Simulación de login exitoso
-      alert("Bienvenido/a al sistema de actas");
+      // 4. Guardar datos de sesión simulada en LocalStorage
+      const usuario = {
+        correo: correo,
+        rol: "Administrador"
+      };
+      localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+
+      alert("¡Bienvenido/a " + correo + "!");
+
+      // 5. Redirección exacta a la carpeta USUARIOS dentro de la raíz
       window.location.href = "USUARIOS/Admin.html";
     }
   </script>
