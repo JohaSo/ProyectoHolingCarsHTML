@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>HoldingCars | Gestión de Actas</title>
+    <title>Gestión de Actas</title>
     <link rel="stylesheet" href="../CSS/Estilo.css">
 </head>
+
 <body>
 
-    <!-- 1. Barra de Navegación (Pública y clara) -->
+    <!--Barra de Navegacion-->
     <header>
         <div class="logo">
-            <h1>HoldingCars</h1>
+            <img src="../IMG/holding_cars_logo.jpg" alt="Logo HoldingCars" style="height: 90px;">
+            <h1>Holding Cars</h1>
         </div>
         <nav>
-            <a href="Inicio.html">Inicio</a>
-            <a href="Producto.html">Flota</a>
-            <a href="Us.html">Nosotros</a>
-            <a href="Login.html">Iniciar Sesión</a>
+            <a href="../HOLDINGCARS-FRONTEND/Inicio.html">Inicio</a>
+            <a href="../HOLDINGCARS-FRONTEND/Producto.html">Vehiculos</a>
+            <a href="../HOLDINGCARS-FRONTEND/Us.html">Nosotros</a>
+            <a href="../HOLDINGCARS-FRONTEND/Login.html">Iniciar Sesión</a>
         </nav>
     </header>
 
-    <!-- 2. Contenido Principal -->
+    <!--Contenido Principal -->
     <main class="container">
-        
+
         <!-- Saludo y bienvenida al sistema de actas-->
         <section class="hero">
-            <h2>Control de Flota y Actas Digitales</h2>
+            <h2>Bienvenido a Holding Cars</h2>
             <p>Sistema para registrar el estado de retiro y entrega de vehículos en tiempo real.</p>
-            <a href="Producto.html" class="btn-primary">Ver Flota Disponible</a>
+            <a href="../HOLDINGCARS-FRONTEND/Producto.html" class="btn-primary">Ver Vehiculos Disponible para Retiro o Entrega</a>
         </section>
 
-        <!-- 3. Listado de Vehículos (Tal cual el acta física) -->
+        <!--Listado de Vehículos -->
         <section>
-            <h2>Estado Actual de la Flota</h2>
+            <h2>Estado Actual del Vehiculo a Retirar</h2>
             <div class="grid" id="lista-vehiculos"></div>
         </section>
 
@@ -42,6 +45,7 @@
         <p>&copy; 2026 HoldingCars. Sistema de Gestión de Actas.</p>
     </footer>
 
-    <script src="JS/Validaciones.js"></script>
+    <script src="../JS/Validaciones.js"></script>
 </body>
+
 </html>

@@ -9,19 +9,14 @@
 
 <body>
   <header>
-    <img src="../IMG/holding_cars_logo.jpg" alt="Logo HoldingCars">
-    <div class="logo">
-      <h1>HoldingCars</h1>
-    </div>
     <nav>
-      <a href="Inicio.html">Inicio</a>
-      <a href="Producto.html">Vehículos</a>
-      <a href="Login.html">Iniciar Sesión</a>
+      <a href="../HOLDINGCARS-FRONTEND/Inicio.html">Inicio</a>
     </nav>
   </header>
 
+
   <div class="container" style="max-width: 600px;">
-    <h2>Registro de Usuario</h2>
+    <h2>Registro de Chofer o Adiministrador</h2>
     <form id="formRegistro" onsubmit="return false;">
       <div class="form-group">
         <label for="nombre">Nombre Completo</label>
@@ -65,76 +60,38 @@
   <!-- Carga del JS principal -->
   <script src="../JS/Validaciones.js"></script>
   <script>
-    // Llenar select de regiones al cargar el documento
     document.addEventListener('DOMContentLoaded', () => {
       const selectRegion = document.getElementById('region');
-      if (typeof regiones !== 'undefined' && selectRegion) {
-        regiones.forEach(reg => {
-          const option = document.createElement('option');
-          option.value = reg.nombre;
-          option.textContent = reg.nombre;
-          selectRegion.appendChild(option);
-        });
-      }
+      regiones.forEach(reg => {
+        const option = document.createElement('option');
+        option.value = reg.nombre;
+        option.textContent = reg.nombre;
+        selectRegion.appendChild(option);
+      });
     });
 
     function validarRegistro() {
-      const nombre = document.getElementById('nombre').value.trim();
-      const correo = document.getElementById('correo').value.trim();
+      const correo = document.getElementById('correo').value;
       const pass = document.getElementById('password').value;
-      const rut = document.getElementById('rut').value.trim();
-      const region = document.getElementById('region').value;
-      const comuna = document.getElementById('comuna').value;
+      const rut = document.getElementById('rut').value;
 
-      // Validación de campos obligatorios vacíos
-      if (!nombre) {
-        alert("Por favor, ingrese su nombre completo.");
-        return;
-      }
-
-      // Validación de correo
       const regexCorreo = /^[^\s@]+@(duoc\.cl|profesor\.duoc\.cl|gmail\.com)$/;
       if (!regexCorreo.test(correo)) {
-        alert("Correo no válido. Solo se permiten dominios @duoc.cl, @profesor.duoc.cl y @gmail.com");
+        alert("Correo no válido. Solo @duoc.cl, @profesor.duoc.cl o @gmail.com");
         return;
       }
 
-      // Validación de contraseña (longitud)
       if (pass.length < 4 || pass.length > 10) {
-        alert("La contraseña debe tener entre 4 y 10 caracteres.");
+        alert("Contraseña inválida (4 a 10 caracteres).");
         return;
       }
 
-      // Validación de RUT (función alojada en Validaciones.js)
       if (!validarRut(rut)) {
         alert("El RUT ingresado no es válido.");
         return;
       }
 
-      // Validación de selección de Región y Comuna
-      if (!region || !comuna) {
-        alert("Debe seleccionar una región y una comuna.");
-        return;
-      }
-
-      // Simulación de guardado en el Backend usando localStorage
-      const nuevoUsuario = {
-        nombre: nombre,
-        correo: correo,
-        rut: rut,
-        region: region,
-        comuna: comuna,
-        rol: "Cliente"
-      };
-
-      let usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
-      usuariosGuardados.push(nuevoUsuario);
-      localStorage.setItem('usuarios', JSON.stringify(usuariosGuardados));
-
-      alert("¡Registro exitoso! Sus datos se han guardado correctamente.");
-
-      // Redirigir al inicio de sesión
-      window.location.href = "Login.html";
+      alert("Registro exitoso.");
     }
   </script>
 </body>

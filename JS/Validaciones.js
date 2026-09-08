@@ -14,7 +14,7 @@ const regiones = [
   },
 ];
 
-// Arreglo de Vehículos, La Flota de HoldingCars
+// Arreglo de Vehículos
 const vehiculos = [
   {
     id: 1,
@@ -104,7 +104,7 @@ function mostrarVehiculos() {
     const card = document.createElement("div");
     card.className = "card";
 
-    // Si el vehículo NO está disponible, mostramos un botón deshabilitado
+    // Si el vehículo NO está disponible, mostramos un boton deshabilitado
     const botonEstado = v.disponible ? (
       <a href="Detalle_Producto.html?id=${v.id}" class="btn-acta">
         Generar Acta
@@ -115,7 +115,7 @@ function mostrarVehiculos() {
       </button>
     );
 
-    // Datos clave del acta física: Patente y Kilometraje
+    // Datos clave del acta: Patente y Kilometraje
     card.innerHTML = `
             <img src="${v.imagen}" alt="${v.nombre}">
             <h3>${v.nombre}</h3>
@@ -128,7 +128,7 @@ function mostrarVehiculos() {
   });
 }
 
-// logica para obtener un vehículo por ID (Para el Detalle_Producto.html / Acta) esta funcion es clave para que el formulario del acta sepa qué auto está seleccionando el usuario.
+//funcion para que el formulario del acta sepa que auto esta seleccionando el usuario.
 function obtenerVehiculoPorId(id) {
   return vehiculos.find((v) => v.id === parseInt(id));
 }
@@ -141,7 +141,7 @@ function guardarActaLocalStorage(acta) {
   alert("Acta guardada localmente. Pendiente de envío al servidor.");
 }
 
-// Inicializar cuando carga el documento (Para que pinte la flota en el Index y Productos)
+// Inicia cuando carga el documento
 document.addEventListener("DOMContentLoaded", () => {
   mostrarVehiculos();
 });
