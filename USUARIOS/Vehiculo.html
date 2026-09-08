@@ -1,1 +1,70 @@
-/*Diego*/
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Flota</title>
+    <link rel="stylesheet" href="../CSS/Estilo.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <h2>HoldingCars</h2>
+            <ul>
+                <li><a href="Admin.html">Dashboard</a></li>
+                <li><a href="Vehiculo.html">Vehículos (Flota)</a></li>
+                <li><a href="Usuario.html">Usuarios (Choferes)</a></li>
+                <li><a href="../Inicio.html">Cerrar Sesión</a></li>
+            </ul>
+        </aside>
+        <main class="content">
+            <div style="display: flex; justify-content: space-between;">
+                <h1>Inventario de Flota</h1>
+                <button onclick="alert('Función para registrar nuevo vehículo')">+ Nuevo Vehículo</button>
+            </div>
+            <table style="width: 100%; border-collapse: collapse;
+margin-top: 20px;">
+                <thead>
+                    <tr style="background: #ddd;">
+                        <th>Patente</th>
+                        <th>Modelo</th>
+                        <th>Kilometraje</th>
+                        <th>Combustible</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tabla-vehiculos">
+                    <tr>
+                        <td><strong>BB·KK·12</strong></td>
+                        <td>Toyota Yaris</td>
+                        <td>45.200 km</td>
+                        <td>3/4</td>
+                        <td style="color: green; font-weight:
+bold;">Disponible</td>
+                        <td>
+                            <button style="width: auto; backgroundcolor: #3498db;" onclick="alert('Generar Acta')">Generar Acta</button>
+                            <button style="width: auto;"
+onclick="alert('Editar')">Editar</button>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>GG·TT·34</strong></td>
+                <td>Suzuki Swift</td>
+                <td>12.000 km</td>
+                <td>Lleno</td>
+                <td style="color: green; font-weight:
+bold;">Disponible</td>
+                <td>
+                    <button style="width: auto; backgroundcolor: #3498db;" onclick="alert('Generar Acta')">Generar Acta</button>
+                    <button style="width: auto;"
+onclick="alert('Editar')">Editar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script src="../JS/Validaciones.js"></script>
+</body>
+</html>
